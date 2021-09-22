@@ -50,12 +50,10 @@ func (e *Estructura) ValidarNumero(tipo string) bool {
 		if err != nil {
 			fmt.Println("ERROR, el valor " + tipo + " no es un número ")
 			fmt.Println(err)
-			os.Exit(2)
 		} else {
 			if !((0 <= value) && (value <= 9)) {
 				fmt.Println("ERROR, el valor " + tipo + " no es un número ")
 				fmt.Println(err)
-				os.Exit(2)
 			}
 		}
 	}
@@ -63,35 +61,7 @@ func (e *Estructura) ValidarNumero(tipo string) bool {
 	return true
 }
 
-/*func (e *Estructura) GenerarTamaño(tipo string) int {
-	tamaño := 0
-	fmt.Println("generar tamaño")
-	fmt.Println(tipo)
-	fmt.Println(len(tipo))
-	for i := 0; i < len(tipo); i++ {
-		value, err := strconv.Atoi(string(tipo[i]))
-		if err != nil {
-			fmt.Println("ERROR, el valor " + tipo + " no es un número ")
-			fmt.Println(err)
-			os.Exit(2)
-		} else {
-			if !((0 <= value) && (value <= 9)) {
-				fmt.Println("ERROR, el valor " + tipo + " no es un número ")
-				fmt.Println(err)
-				os.Exit(2)
-			} else {
-				//tamaño = tamaño + value*10 ^ (len(tipo) - (i + 1))
-				fmt.Println(10 ^ (len(tipo) - (i + 1)))
-			}
-		}
-	}
-	e.tamaño = tamaño
-	fmt.Println("fin generar")
-	return tamaño
-}*/
-
-func main() {
-	contenido := Cadena{os.Args[1]}
+func ValidarEstructura(contenido Cadena) {
 	estructura := contenido.GenerarEstructura(contenido.Input)
 	validaTipo := estructura.ValidarNumero(strconv.Itoa(estructura.tamaño))
 	if validaTipo {
@@ -115,4 +85,9 @@ func main() {
 	}
 
 	fmt.Println(estructura)
+}
+
+func main() {
+	contenido := Cadena{os.Args[1]}
+	ValidarEstructura(contenido)
 }
